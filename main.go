@@ -6,4 +6,5 @@ import (
 
 func main() {
 	p.SummationOfMultiplesValues()
+	p.SummationOfEvenFibonacciValues()
 }
