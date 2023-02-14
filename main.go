@@ -7,4 +7,5 @@ import (
 func main() {
 	p.SummationOfMultiplesValues()
 	p.SummationOfEvenFibonacciValues()
+	p.InputNumbersToFindLargestPrimenumber(600851475143)
 }
