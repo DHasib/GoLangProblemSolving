@@ -1,5 +1,10 @@
+# Rent-Management-System
 
+This is a comprehensive tool named “RMS” with an aim of maximizing rental income and minimizing administrative overhead.The system will be designed to help landlords manage their rental properties more efficiently and effectively.
 
+## ER Diagram
+
+```mermaid
 erDiagram
     Tenant ||--o{ Property : rents
     Tenant ||--o{ User: has
@@ -175,16 +180,49 @@ erDiagram
     }
 
 
+```
 
+## Activity Diagrams
 
+```mermaid
+---
+---
+title: Update Renter Balance on Reading Input
+---
+flowchart LR
+    start((START))
+    stop(((STOP)))
 
+    start --> A
+    A[/Get utility/] --> B{Utility Exists ?}
+    B --No--> Exception[Rise Exception]
+    B --Yes--> C{Same month reading\n exists for same utility ?}
+    C --Yes--> Exception
+    C --No--> D[/Get active Renter of the property/]
+    D --No--> E{Multiple active renter ?}
+    E --Yes--> Exception
+    E --No--> F[/Store reading/]
+    F --> G[/Update renter's balance/]
+    G --> stop
+```
 
+```mermaid
+---
+---
+title: Rent Payment
+---
+flowchart LR
+    start((Start))
+    stop(((STOP)))
 
-
-
-
-
-
-
-
-
+    Exception[/Raise Exception/]
+    start --> A
+    A[/Get Renter/] --> B{Renter exists ?}
+    B --No--> Exception
+    B --Yes--> C{Is pay on cash?}
+    C --Yes--> D[/store payment data/]
+    D --> E[/Update Renter Balance/]
+    C --No--> F[Get Payment Gateway's\n response]
+    F --> D
+    E --> stop
+```
